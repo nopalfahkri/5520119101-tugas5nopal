@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Exports\BookExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+class AdminController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        return view('admin.home');
+    }
+
+    public function export()
+    {
+        return Excel::download(new BookExport, 'Books.xlsx');
+    }
+}
