@@ -31,7 +31,6 @@ Route::get('/ajax/dataBrand/{id}', [App\Http\Controllers\BrandController::class,
 Route::post('/brand', [App\Http\Controllers\BrandController::class, 'submit_brand'])->name('brand.submit');
 Route::patch('/brand/update', [App\Http\Controllers\BrandController::class, 'update_brand'])->name('brand.update');
 Route::delete('/brand/delete', [App\Http\Controllers\BrandController::class, 'delete_brand'])->name('brand.delete');
-Route::get('admin/books/export',[App\Http\Controllers\AdminController::class, 'export'])->name('admin.book.export')->middleware('is_admin');
 
 // pengelolaan Categorie
 Route::get('/categorie', [App\Http\Controllers\CategorieController::class, 'index'])->name('categorie');
@@ -39,7 +38,6 @@ Route::get('/ajax/dataCategorie/{id}', [App\Http\Controllers\CategorieController
 Route::post('/categorie', [App\Http\Controllers\CategorieController::class, 'submit_categorie'])->name('categorie.submit');
 Route::patch('/categorie/update', [App\Http\Controllers\CategorieController::class, 'update_categorie'])->name('categorie.update');
 Route::delete('/categorie/delete', [App\Http\Controllers\CategorieController::class, 'delete_categorie'])->name('categorie.delete');
-Route::get('admin/books/export',[App\Http\Controllers\AdminController::class, 'export'])->name('admin.book.export')->middleware('is_admin');
 
 // pengelolaan Product
 Route::get('/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
@@ -47,7 +45,16 @@ Route::get('/ajax/dataProduct/{id}', [App\Http\Controllers\ProductController::cl
 Route::post('/product', [App\Http\Controllers\ProductController::class, 'submit_product'])->name('product.submit');
 Route::patch('/product/update', [App\Http\Controllers\ProductController::class, 'update_product'])->name('product.update');
 Route::delete('/product/delete', [App\Http\Controllers\ProductController::class, 'delete_product'])->name('product.delete');
-Route::get('admin/books/export',[App\Http\Controllers\AdminController::class, 'export'])->name('admin.book.export')->middleware('is_admin');
+
+
+// pengelolaan User
+Route::middleware('is_admin')->prefix('admin')->group(function(){
+    Route::get('/user', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.user');
+    Route::get('/user', [App\Http\Controllers\AdminController::class, 'user'])->name('admin.user');
+    Route::post('/user', [App\Http\Controllers\AdminController::class, 'submit_user'])->name('admin.user.submit');
+    Route::patch('/user/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update');
+    Route::delete('/user/delete', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.user.delete');
+});
 
 // Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 
