@@ -68,3 +68,7 @@ Route::middleware('is_admin')->prefix('admin')->group(function(){
 
 
 // PENGOLOLAAN BRANDS
+
+Route::get('/reportin', [App\Http\Controllers\ReportInController::class, 'index'])->name('admin.reports')->middleware('is_admin');
+Route::get('/print_reportin', [App\Http\Controllers\ReportInController::class, 'print_reportin'])->name('admin.print_reportin')->middleware('is_admin');
+Route::get('/reportout', [App\Http\Controllers\ReportOutController::class, 'index'])->name('admin.reportouts')->middleware('is_admin');

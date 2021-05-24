@@ -269,12 +269,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Laporan Barang Masuk',
-                    'url'  => 'admin/laporan/masuk',
+                    'url'  => 'reportin',
                     'icon' => 'fas fa-sign-in-alt',
                 ],
                 [
                     'text'    => 'Laporan Barang Keluar',
-                    'url'     => 'admin/laporan/keluar',
+                    'url'     => 'reportout',
                     'icon' => 'fas fa-sign-out-alt',
                 ],
             ],
